@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人中心</title>
+</head>
+<body>
+<h2>{{ user.username }}</h2>
+<p>已借图书</p>
+<ul>
+{% for book in user.book_set.all %}
+<li>{{ book.title }}</li>
+    出借日期：{{ book.borrow_date }} &nbsp;&nbsp;
+    归还日期：{{ book.should_return_date }}
+{% endfor %}
+</ul>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图书列表</title>
+</head>
+<body>
+{% include 'search_snippet.html' %}
+<h>图书列表：</h>
+<ul>
+    {% for book in book_list %}
+        <li>{{book.title}} &nbsp; -- &nbsp;
+            {{book.book_amount}}
+            {% for author in book.author.all %}
+                {{ author.name }} &nbsp;
+            {% endfor %}
+        </li>
+    {% endfor %}
+</ul>
+
+<!-- 分页 -->
+<!-- TODO: 条件情况判断 -->
+<div class="row">
+    <div class="col-md-4 col-md-offset-2">
+        <ul class="pager">
+            {% if book_list.has_previous %}
+            <li><a href="{% url 'books:paginator' book_list.previous_page_number %}">上一页</a></li>
+            {% else %}
+            <li class="disabled"><a>上一页</a></li>
+            {% endif %}
+
+            {{ book_list.number }} of {{ book_list.paginator.num_pages }}
+
+            {% if book_list.has_next %}
+            <li><a href="{% url 'books:paginator' book_list.next_page_number %}">下一页</a></li>
+            {% else %}
+            <li class="disabled"><a>下一页</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图书搜索结果</title>
+</head>
+<body>
+{% include 'search_snippet.html' %}
+<h>图书搜索结果：</h>
+<ul>
+    {% for book in book_search_results %}
+        <li>{{book.title}} &nbsp; -- &nbsp;
+            {{book.book_amount}}
+            {% for author in book.author.all %}
+                {{ author.name }} &nbsp;
+            {% endfor %}
+        </li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>

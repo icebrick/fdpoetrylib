@@ -1,0 +1,8 @@
+<form action="{% url 'books:search_results' %}" method="get">
+    <select name="search_by">
+        <option value="0">书名</option>
+        <option value="1">作者</option>
+    </select>
+    <input type="text" name="search_pattern">
+    <button type="submit">搜索</button>
+</form>
