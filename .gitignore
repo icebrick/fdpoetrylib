@@ -98,6 +98,10 @@ venv.bak/
 # mkdocs documentation
 /site
 
+# pycharm files
+/.idea/
+
 # book data
 .data.xlsx
+
 
